@@ -18,17 +18,17 @@ internal class BoardTest(
   }
 
   @Test
-  fun `1번 게시물 정보를 가져온다`() {
+  fun `nested select 형태로 가져온다`() {
     val boardId = 1
     val board = boardMapper.getBoardById(boardId)
 
     assertThat(board).isNotNull
     assertThat(board.boardId).isEqualTo(boardId)
-    assertThat(board.comments).isEmpty()
+    assertThat(board.comments).isNotEmpty
   }
 
   @Test
-  fun `Join 형태로 쿼리`() {
+  fun `nested result 형태로 가져 온다`() {
     val boardId = 1
 
     val board = boardMapper.selectBoardWithComment(boardId)

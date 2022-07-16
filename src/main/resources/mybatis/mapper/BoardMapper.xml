@@ -8,7 +8,7 @@
     <id property="boardId" column="board_id"/>
     <result property="title" column="board_title"/>
     <result property="content" column="board_content"/>
-    <collection property="comments" column="boardId"
+    <collection property="comments" column="{boardId = board_id}"
       ofType="commentResult" select="getCommentListById"/>
   </resultMap>
 
