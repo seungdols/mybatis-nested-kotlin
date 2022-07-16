@@ -22,6 +22,8 @@ internal class BoardTest(
     val boardId = 1
     val board = boardMapper.getBoardById(boardId)
 
-    println(board.comments)
+    assertThat(board).isNotNull
+    assertThat(board.boardId).isEqualTo(boardId)
+    assertThat(board.comments).isEmpty()
   }
 }
