@@ -1,6 +1,6 @@
 package com.sample.seungdols.domain.vo
 
-class Board(
+data class Board(
   val boardId: Int = -1,
   val title: String = "",
   val content: String = "",

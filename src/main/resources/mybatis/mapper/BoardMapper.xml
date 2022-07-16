@@ -8,8 +8,15 @@
     <id property="boardId" column="board_id"/>
     <result property="title" column="board_title"/>
     <result property="content" column="board_content"/>
-    <collection property="comments" column="boardId" javaType="java.util.ArrayList"
-      ofType="com.sample.seungdols.domain.vo.Comment" select="getCommentListById"/>
+    <collection property="comments" column="boardId"
+      ofType="commentResult" select="getCommentListById"/>
+  </resultMap>
+
+  <resultMap id="commentResult" type="com.sample.seungdols.domain.vo.Comment">
+    <id property="commentId" column="comment_id"/>
+    <result property="boardId" column="board_id"/>
+    <result property="writer" column="writer"/>
+    <result property="content" column="content"/>
   </resultMap>
 
   <select id="getBoardById" resultMap="boardResult">
@@ -18,7 +25,7 @@
     WHERE board_id = #{boardId}
   </select>
 
-  <select id="getCommentListById" resultType="com.sample.seungdols.domain.vo.Comment">
+  <select id="getCommentListById" resultMap="commentResult">
     SELECT comment_id, board_id, writer, content
     FROM comment
     WHERE board_id = #{boardId}
