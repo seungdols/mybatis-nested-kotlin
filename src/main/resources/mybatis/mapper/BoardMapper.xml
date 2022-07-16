@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sample.seungdols.domain.BoardMapper">
+
+  <resultMap id="boardResult" type="com.sample.seungdols.domain.vo.Board">
+    <id property="boardId" column="board_id"/>
+    <result property="title" column="board_title"/>
+    <result property="content" column="board_content"/>
+    <collection property="comments" column="boardId" javaType="java.util.ArrayList"
+      ofType="com.sample.seungdols.domain.vo.Comment" select="getCommentListById"/>
+  </resultMap>
+
+  <select id="getBoardById" resultMap="boardResult">
+    SELECT board_id, board_title, board_content
+    FROM board
+    WHERE board_id = #{boardId}
+  </select>
+
+  <select id="getCommentListById" resultType="com.sample.seungdols.domain.vo.Comment">
+    SELECT comment_id, board_id, writer, content
+    FROM comment
+    WHERE board_id = #{boardId}
+  </select>
+</mapper>
