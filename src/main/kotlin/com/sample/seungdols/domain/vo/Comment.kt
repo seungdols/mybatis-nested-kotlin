@@ -1,8 +1,10 @@
 package com.sample.seungdols.domain.vo
 
+import com.sample.seungdols.annotation.NoArg
+
+@NoArg
 data class Comment(
-  val commentId: Int = -1,
-  val boardId: Int = -1,
-  val writer: String = "",
-  val content: String = ""
+  val commentId: Int,
+  val writer: String,
+  val content: String
 )

@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper
 interface BoardMapper {
   fun getBoardById(boardId: Int): Board
   fun getCommentListById(boardId: Int): List<Comment>
+  fun selectBoardWithComment(boardId: Int): Board
 }
