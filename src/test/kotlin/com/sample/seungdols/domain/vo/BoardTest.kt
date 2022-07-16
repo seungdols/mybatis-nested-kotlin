@@ -26,4 +26,13 @@ internal class BoardTest(
     assertThat(board.boardId).isEqualTo(boardId)
     assertThat(board.comments).isEmpty()
   }
+
+  @Test
+  fun `Join 형태로 쿼리`() {
+    val boardId = 1
+
+    val board = boardMapper.selectBoardWithComment(boardId)
+
+    assertThat(board.comments.size).isGreaterThan(0)
+  }
 }
