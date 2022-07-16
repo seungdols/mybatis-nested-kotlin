@@ -1,8 +1,8 @@
 package com.sample.seungdols.domain.vo
 
-data class Comment(
+class Comment(
   val commentId: Int,
   val boardId: Int,
-  val wrtier: String,
+  val writer: String,
   val content: String
 )
